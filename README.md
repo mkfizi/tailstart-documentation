@@ -1,5 +1,5 @@
 # Tailstart Kit - Documentation
-TailwindCSS documentation boilerplate for knowledge base sites.
+TailwindCSS documentation starter kit for knowledge base sites.
 
 ## Features
 * Dark mode toggle: Users can switch between light and dark modes for better readability and preference.
