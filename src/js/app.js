@@ -140,7 +140,7 @@
                 toggleLink: () => {
                     const scrollPosition = window.scrollY;
                     app.element.sections.forEach((targetSection) => {
-                        const sectionTop = targetSection.offsetTop - app.element.navbar.offsetHeight;
+                        const sectionTop = targetSection.offsetTop - app.element.navbar.offsetHeight - parseFloat(getComputedStyle(targetSection).marginTop);
                         const sectionHeight = targetSection.offsetHeight + parseFloat(getComputedStyle(targetSection).marginTop);
                         const targetLink = document.querySelector(`a[href="#${targetSection.id}"]`);
                         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
