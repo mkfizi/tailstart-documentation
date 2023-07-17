@@ -82,25 +82,28 @@
 
             // Open menu
             open: targetElement => {
-                app.view.menu.toggle(true, targetElement);
-                app.view.menu.focusTrap = event => { 
-                    app.view.menu.handleFocusTrap(event,targetElement); 
+                if (targetElement) {
+                    app.view.menu.toggle(true, targetElement);
+                    app.view.menu.focusTrap = event => { 
+                        app.view.menu.handleFocusTrap(event,targetElement); 
+                    }
+                    window.addEventListener('keydown', app.view.menu.focusTrap);
+                    
+                    // Force focus to trigger focus trap
+                    targetElement.setAttribute('tabindex', 1);
+                    targetElement.focus();
+                    setTimeout(() => {
+                        targetElement.removeAttribute('tabindex');
+                    }, 100);
                 }
-                window.addEventListener('keydown', app.view.menu.focusTrap);
-                
-                // Force focus to trigger focus trap
-                targetElement.setAttribute('tabindex', 1);
-                targetElement.focus();
-                setTimeout(() => {
-                    targetElement.removeAttribute('tabindex');
-                }, 100);
-
             },
 
             // Close menu
             close: targetElement => {
-                app.view.menu.toggle(false, targetElement);
-                window.removeEventListener('keydown', app.view.menu.focusTrap);
+                if (targetElement) {
+                    app.view.menu.toggle(false, targetElement);
+                    window.removeEventListener('keydown', app.view.menu.focusTrap);
+                }
             },
 
             // Handle focus trap
@@ -150,16 +153,20 @@
 
                 // Toggle active sidebar menu link
                 toggleActiveLink: (isActive, targetLink)=> {
-                    targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
-                    targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
+                    if (targetLink) {
+                        targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
+                        targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
+                    }
                 },
 
 
                 // Handle click outside
                 handleClickOutside: event => {
-                    if (!event.target.closest(`[aria-labelledby="${app.element.sidebarMenu.id}"]`) && !event.target.closest(`[aria-controls="${app.element.sidebarMenu.id}"]`)) {
-                        app.view.menu.close(app.element.sidebarMenu);
-                        app.view.sidebar.menu.close();
+                    if (app.element.sidebarMenu) {
+                        if (!event.target.closest(`[aria-labelledby="${app.element.sidebarMenu.id}"]`) && !event.target.closest(`[aria-controls="${app.element.sidebarMenu.id}"]`)) {
+                            app.view.menu.close(app.element.sidebarMenu);
+                            app.view.sidebar.menu.close();
+                        }
                     }
                 },
             }
@@ -209,10 +216,10 @@
 
                 // Close menu if window size is more than breakpoint size
                 if (window.innerWidth >= app.breakpointSize) {
-                    if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
+                    if (app.element.navbarMenu && app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
                         app.view.menu.close(app.element.navbarMenu);
                     }
-                    if (app.element.sidebarMenu.getAttribute('aria-hidden') === 'false') {
+                    if (app.element.sidebarMenu && app.element.sidebarMenu.getAttribute('aria-hidden') === 'false') {
                         app.view.menu.close(app.element.sidebarMenu);
                     }
                 }
