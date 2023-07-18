@@ -111,7 +111,7 @@
                 const focusableElements = targetElement.querySelectorAll('a:not([tabindex="-1"]), button:not([tabindex="-1"]), input:not([tabindex="-1"]), textarea:not([tabindex="-1"]), select:not([tabindex="-1"]), details:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"]), [contenteditable="true"]:not([tabindex="-1"])');
                 const firstElement = focusableElements[0];
                 const lastElement = focusableElements[focusableElements.length - 1];
-                if (event.type === "keydown" && event.keyCode === 9) {
+                if (event.type === 'keydown' && event.keyCode === 9) {
                     if (event.shiftKey && (document.activeElement === firstElement || document.activeElement === document.body)) {
                         event.preventDefault();
                         lastElement.focus();
