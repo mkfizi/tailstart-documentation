@@ -156,6 +156,9 @@
                     if (targetLink) {
                         targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
                         targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
+                        if (!targetLink.classList.contains('font-semibold')) {
+                            targetLink.classList[isActive ? 'add' : 'remove']('font-medium');
+                        }
                     }
                 },
 
