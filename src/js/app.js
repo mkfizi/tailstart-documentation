@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Tailstart Kit - Documentation v0.1.0: app.js
+ * Tailstart Kit - Documentation v0.2.0: app.js
  * Licensed under MIT (https://github.com/mkfizi/tailstart-kit-documentation/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -12,7 +12,7 @@
     const app = {};
 
     app.name = 'Tailstart Kit - Documentation';
-    app.version = '0.1.0';
+    app.version = '0.2.0';
     app.breakpointSize = 1024;
 
     app.element = {
