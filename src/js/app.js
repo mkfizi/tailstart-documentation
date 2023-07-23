@@ -67,110 +67,110 @@
         },
 
         menu: {
-            // Toggle menu view
-            toggle: (isOpen, targetElement) => {
-                if (targetElement) {
-                    targetElement.classList[isOpen? 'remove' : 'add']('hidden', 'invisible');
-                    targetElement.setAttribute('aria-hidden', !isOpen);
+            toggle: (targetElement, isOpen) => {
+                targetElement.classList[isOpen? 'remove' : 'add']('hidden', 'invisible');
+                targetElement.setAttribute('aria-hidden', !isOpen);
 
-                    const id = targetElement.id
-                    document.querySelectorAll(`[aria-controls="${id}"]`).forEach(currentToggleElement => {
-                        currentToggleElement.setAttribute('aria-expanded', isOpen);
-                    });
+                // Set toggle element `[aria-expanded]` attribute value
+                document.querySelectorAll(`[aria-controls="${targetElement.id}"]`).forEach(currentToggleElement => {
+                    currentToggleElement.setAttribute('aria-expanded', isOpen);
+                });
+                
+                // Toggle handlers
+                if (isOpen) {
+                    app.view.menu.clickOutside = app.view.menu.attachClickOutside(targetElement);
+                    app.view.menu.escape = app.view.menu.attachEscape(targetElement);
+                    app.view.menu.focusTrap = app.view.menu.attachFocusTrap(targetElement);
+                } else {
+                    if (app.view.menu.clickOutside != null) app.view.menu.clickOutside();
+                    if (app.view.menu.escape != null) app.view.menu.escape();
+                    if (app.view.menu.focusTrap != null) app.view.menu.focusTrap();
                 }
             },
 
-            // Open menu
-            open: targetElement => {
-                if (targetElement) {
-                    app.view.menu.toggle(true, targetElement);
-                    app.view.menu.focusTrap = event => { 
-                        app.view.menu.handleFocusTrap(event,targetElement); 
+            // Attach click outside offcanvas
+            attachClickOutside: targetElement => {
+                const clickOutsideHandler = event => {
+                    if (!event.target.closest(`[aria-labelledby="${targetElement.id}"]`) && !event.target.closest(`[aria-controls="${targetElement.id}"]`)) {
+                        app.view.menu.toggle(targetElement, false);
                     }
-                    window.addEventListener('keydown', app.view.menu.focusTrap);
-                    
-                    // Force focus to trigger focus trap
-                    targetElement.setAttribute('tabindex', 1);
-                    targetElement.focus();
-                    setTimeout(() => {
-                        targetElement.removeAttribute('tabindex');
-                    }, 100);
+                }
+                document.addEventListener('click', clickOutsideHandler);
+                return () => {
+                    document.removeEventListener('click', clickOutsideHandler);
                 }
             },
 
-            // Close menu
-            close: targetElement => {
-                if (targetElement) {
-                    app.view.menu.toggle(false, targetElement);
-                    window.removeEventListener('keydown', app.view.menu.focusTrap);
+            // Attach press escape key
+            attachEscape: targetElement => {
+                const escapeHandler = event => {
+                    if (event.key === 'Escape') {
+                        app.view.menu.toggle(targetElement, false);
+                    }
+                }
+                window.addEventListener('keydown', escapeHandler);
+                return () => {
+                    window.removeEventListener('keydown', escapeHandler);
                 }
             },
 
-            // Handle focus trap
-            handleFocusTrap: (event, targetElement) => {
-                const focusableElements = targetElement.querySelectorAll('a:not([tabindex="-1"]), button:not([tabindex="-1"]), input:not([tabindex="-1"]), textarea:not([tabindex="-1"]), select:not([tabindex="-1"]), details:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"]), [contenteditable="true"]:not([tabindex="-1"])');
+            // Attach focus trap
+            attachFocusTrap: targetElement => {
+                // Toggle force focus on target element
+                targetElement.setAttribute('tabindex', 1);
+                targetElement.focus();
+                setTimeout(() => {
+                    targetElement.removeAttribute('tabindex');
+                }, 100);
+
+                const focusableElements = Array.from(targetElement.querySelectorAll('a, button, input, textarea, select, details, [tabindex], [contenteditable="true"]')).filter(element => {
+                    return !element.closest('[tabindex="-1"], .hidden, .invisible') || null;
+                });
                 const firstElement = focusableElements[0];
                 const lastElement = focusableElements[focusableElements.length - 1];
-                if (event.type === 'keydown' && event.keyCode === 9) {
-                    if (event.shiftKey && (document.activeElement === firstElement || document.activeElement === document.body)) {
-                        event.preventDefault();
-                        lastElement.focus();
-
-                    } else if (!event.shiftKey && document.activeElement === lastElement) {
-                        event.preventDefault();
-                        firstElement.focus();
+                const focusTrapHandler = event => {
+                    if (event.type === 'keydown' && event.key === 'Tab') {
+                        if (event.shiftKey && (document.activeElement === firstElement || document.activeElement === document.body)) {
+                            event.preventDefault();
+                            lastElement.focus();
+                        } else if (!event.shiftKey && document.activeElement === lastElement) {
+                            event.preventDefault();
+                            firstElement.focus();
+                        }
                     }
                 }
+
+                window.addEventListener('keydown', focusTrapHandler);
+                return () => {
+                    window.removeEventListener('keydown', focusTrapHandler);
+                }
             }
+
         },
 
         sidebar: {
             menu: {
-                // Open sidebar menu
-                open: () => {
-                    document.addEventListener('click', app.view.sidebar.menu.handleClickOutside);
-                },
-
-                // Close sidebar menu
-                close: () => {
-                    document.addEventListener('click',  app.view.sidebar.menu.handleClickOutside);
-                },
-
-                // Toggle sidebar menu link
-                toggleLink: () => {
+                // Toggle active sidebar menu link
+                toggleActiveLink: () => {
                     const scrollPosition = window.scrollY;
                     app.element.sections.forEach((targetSection) => {
                         const sectionTop = targetSection.offsetTop - app.element.navbar.offsetHeight - parseFloat(getComputedStyle(targetSection).marginTop);
                         const sectionHeight = targetSection.offsetHeight + parseFloat(getComputedStyle(targetSection).marginTop);
-                        const targetLink = document.querySelector(`a[href="#${targetSection.id}"]`);
+
+                        let isActive = false;
                         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                            app.view.sidebar.menu.toggleActiveLink(true, targetLink);
-                        } else {
-                            app.view.sidebar.menu.toggleActiveLink(false, targetLink);
+                            isActive = true;
+                        }
+
+                        const targetLink = document.querySelector(`a[href="#${targetSection.id}"]`);
+                        if (targetLink) {
+                            targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
+                            targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
+                            if (!targetLink.classList.contains('font-semibold')) {
+                                targetLink.classList[isActive ? 'add' : 'remove']('font-medium');
+                            }
                         }
                     });
-                },
-
-                // Toggle active sidebar menu link
-                toggleActiveLink: (isActive, targetLink)=> {
-                    if (targetLink) {
-                        targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
-                        targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
-                        if (!targetLink.classList.contains('font-semibold')) {
-                            targetLink.classList[isActive ? 'add' : 'remove']('font-medium');
-                        }
-                    }
-                },
-
-
-                // Handle click outside
-                handleClickOutside: event => {
-                    if (app.element.sidebarMenu) {
-                        if (!event.target.closest(`[aria-labelledby="${app.element.sidebarMenu.id}"]`) && !event.target.closest(`[aria-controls="${app.element.sidebarMenu.id}"]`)) {
-                            app.view.menu.close(app.element.sidebarMenu);
-                            app.view.sidebar.menu.close();
-                        }
-                    }
                 },
             }
         },
@@ -179,7 +179,7 @@
         init: () => {
             app.view.viewportHeight.toggle();
             app.view.footer.toggle();
-            app.view.sidebar.menu.toggleLink();
+            app.view.sidebar.menu.toggleActiveLink();
         }
     }
 
@@ -194,18 +194,16 @@
                             app.view.darkMode.toggle();
                             break;
                         case app.element.navbarMenuOpen.id:
-                            app.view.menu.open(app.element.navbarMenu);
+                            app.view.menu.toggle(app.element.navbarMenu, true);
                             break;
                         case app.element.navbarMenuClose.id:
-                            app.view.menu.close(app.element.navbarMenu);
+                            app.view.menu.toggle(app.element.navbarMenu, false);
                             break;
                         case app.element.sidebarMenuOpen.id:
-                            app.view.menu.open(app.element.sidebarMenu);
-                            app.view.sidebar.menu.open();
+                            app.view.menu.toggle(app.element.sidebarMenu, true);
                             break;
                         case app.element.sidebarMenuClose.id:
-                            app.view.menu.close(app.element.sidebarMenu);
-                            app.view.sidebar.menu.close();
+                            app.view.menu.toggle(app.element.sidebarMenu, false);
                             break;
                     }
                 }
@@ -220,17 +218,17 @@
                 // Close menu if window size is more than breakpoint size
                 if (window.innerWidth >= app.breakpointSize) {
                     if (app.element.navbarMenu && app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
-                        app.view.menu.close(app.element.navbarMenu);
+                        app.view.menu.toggle(app.element.navbarMenu, false);
                     }
                     if (app.element.sidebarMenu && app.element.sidebarMenu.getAttribute('aria-hidden') === 'false') {
-                        app.view.menu.close(app.element.sidebarMenu);
+                        app.view.menu.toggle(app.element.sidebarMenu, false);
                     }
                 }
             },
 
             // Handle window 'scroll' event
             scroll: () => {
-                app.view.sidebar.menu.toggleLink();
+                app.view.sidebar.menu.toggleActiveLink();
             }
         },
 
