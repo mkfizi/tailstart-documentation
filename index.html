@@ -89,7 +89,7 @@
             <div class="flex items-center gap-4">
                 <!-- Navbar menu -->
                 <div id="navbar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:block lg:visible bg-neutral-500/50 lg:bg-transparent lg:relative lg:w-auto lg:h-auto lg:left-auto lg:top-auto lg:z-0">
-                    <div class="fixed w-full h-full p-4 overflow-y-auto bg-white lg:relative lg:h-auto lg:p-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
+                    <div class="fixed top-0 left-0 w-full h-full p-4 overflow-y-auto bg-white lg:relative lg:h-auto lg:p-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
                         <button type="button" class="absolute lg:hidden right-4 top-4 group" id="navbar-menu-close" aria-expanded="false" aria-label="Close navbar menu">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -153,8 +153,8 @@
     <div class="grid max-w-screen-xl mx-auto lg:gap-8 lg:grid-cols-4">
         <!-- Sidebar menu -->
         <aside>
-            <div id="sidebar-menu" class="fixed top-0 z-20 invisible hidden w-screen h-screen lg:left-auto bg-neutral-500/50 lg:bg-transparent lg:block lg:visible lg:w-auto lg:pt-16" aria-hidden="true">
-                <div class="fixed h-full p-4 pb-24 overflow-y-auto bg-white w-72 dark:bg-neutral-800 drop-shadow-md lg:drop-shadow-none lg:bg-transparent lg:dark:bg-transparent lg:p-0 lg:relative lg:px-8 lg:pt-16 lg:pb-20" aria-labelledby="sidebar-menu">
+            <div id="sidebar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:left-auto bg-neutral-500/50 lg:bg-transparent lg:block lg:visible lg:w-auto lg:pt-16" aria-hidden="true">
+                <div class="fixed top-0 left-0 h-full p-4 pb-24 overflow-y-auto bg-white lg:left-auto lg:top-auto w-72 dark:bg-neutral-800 drop-shadow-md lg:drop-shadow-none lg:bg-transparent lg:dark:bg-transparent lg:p-0 lg:relative lg:px-8 lg:pt-16 lg:pb-20" aria-labelledby="sidebar-menu">
                     <button type="button" class="absolute right-4 top-4 group lg:hidden" id="sidebar-menu-close" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Close sidebar menu">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -164,25 +164,25 @@
                     </button>
                     <ul class="space-y-6 marker:text-neutral-700 dark:marker:text-neutral-300">
                         <li class="space-y-4">
-                            <p class="text-base font-semibold text-black dark:text-white">Introduction</p>
+                            <a href="#introduction" class="block text-base font-semibold text-black dark:text-white">Introduction</a>
                             <ul class="ml-4 space-y-3 marker:text-neutral-700 dark:marker:text-neutral-300">
                                 <li>
                                     <a href="#overview" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Overview</a>
                                 </li>
                                 <li>
-                                    <a href="#statements-and-expressions" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Statements and Expressions</a>
+                                    <a href="#statement-and-expression" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Statement and Expression</a>
                                 </li>
                                 <li>
-                                    <a href="#identifiers" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Identifiers</a>
+                                    <a href="#identifier" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Identifier</a>
                                 </li>
                                 <li>
-                                    <a href="#operators" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Operators</a>
+                                    <a href="#operator" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Operator</a>
                                 </li>
                                 <li>
-                                    <a href="#whitespace-and-line-breaks" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Whitespace and line breaks</a>
+                                    <a href="#whitespace-and-line-break" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Whitespace and line break</a>
                                 </li>
                                 <li>
-                                    <a href="#coding-conventions" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Coding Conventions</a>
+                                    <a href="#coding-convention" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Coding Convention</a>
                                 </li>
                             </ul>
                         </li>
@@ -223,28 +223,28 @@
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Syntax is the set of rules that define how programs in JavaScript must be structured. It includes rules for how different types of statements are formatted, how variables are declared, how expressions are evaluated, and more.</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Understanding the syntax of JavaScript is crucial for writing code that is correct, understandable, and efficient. It enables you to express your ideas in a way that the JavaScript interpreter can understand.</p>
             </section>
-            <section id="statements-and-expressions" class="space-y-4 scroll-mt-32">
-                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Statements and Expressions</p>
+            <section id="statement-and-expression" class="space-y-4 scroll-mt-32">
+                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Statement and Expression</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">In JavaScript, a statement is a standalone unit of execution. It typically corresponds to an action or a series of actions.</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">An expression is a piece of code that evaluates to a value. It can consist of variables, literals, operators, and function calls.</p>
             </section>
-            <section id="identifiers" class="space-y-4 scroll-mt-32">
-                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Identifiers</p>
+            <section id="identifier" class="space-y-4 scroll-mt-32">
+                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Identifier</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Identifiers are used to name variables, functions, parameters, etc. They can contain letters, digits, underscores, and dollar signs. They must start with a letter, underscore or dollar sign.</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">JavaScript has a set of reserved words that cannot be used as identifiers. These include keywords such as <strong>if</strong>, <strong>else</strong>, <strong>function</strong>, <strong>return</strong>, etc.</p>
             </section>
-            <section id="operators" class="space-y-4 scroll-mt-32">
-                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Operators</p>
+            <section id="operator" class="space-y-4 scroll-mt-32">
+                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Operator</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Arithmetic operators are used to perform mathematical operations. They include <strong>+</strong> (addition), <strong>-</strong> (subtraction), <strong>*</strong> (multiplication), <strong>/</strong> (division), and <strong>%</strong> (modulus).</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">JavaScript has a set of reserved words that cannot be used as identifiers. These include keywords such as <strong>if</strong>, <strong>else</strong>, <strong>function</strong>, <strong>return</strong>, etc.</p>
             </section>
-            <section id="whitespace-and-line-breaks" class="space-y-4 scroll-mt-32">
-                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Whitespace and line breaks</p>
+            <section id="whitespace-and-line-break" class="space-y-4 scroll-mt-32">
+                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Whitespace and line break</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Whitespace characters (spaces, tabs, and newlines) can be used to make the code more readable. They can be used in between operators, keywords, and identifiers.</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Line breaks can be used to separate statements, improving code readability. Each statement in JavaScript should ideally be on a separate line.</p>
             </section>
-            <section id="coding-conventions" class="space-y-4 scroll-mt-32">
-                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Coding Conventions</p>
+            <section id="coding-convention" class="space-y-4 scroll-mt-32">
+                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Coding Convention</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">It's common to use camelCase for variable and function names. For example, <strong>myVariable</strong> or <strong>calculateSum</strong>.</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Line breaks can be used to separate statements, improving code readability. Each statement in JavaScript should ideally be on a separate line.</p>
             </section>
@@ -257,12 +257,6 @@
             <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
             <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="inline-block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">mkfizi</a></span>
         </footer>
-
-
-    <!-- <footer class="absolute bottom-0 flex flex-col items-center justify-between w-full max-w-screen-xl px-4 pb-px transform -translate-x-1/2 sm:flex-row left-1/2 sm:px-8">
-        <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
-        <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="inline-block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">mkfizi</a></span>
-    </footer> -->
     </div>
 </body>
 </html>
