@@ -601,10 +601,6 @@ video {
   margin-top: 2rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
 .block {
   display: block;
 }
@@ -644,10 +640,6 @@ video {
 .h-screen {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-}
-
-.h-32 {
-  height: 8rem;
 }
 
 .min-h-screen {
@@ -1051,11 +1043,6 @@ body{
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
-
-  .sm\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -1159,11 +1146,6 @@ body{
   .lg\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
-  }
-
-  .lg\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 
   .lg\:drop-shadow-none {
