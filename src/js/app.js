@@ -190,19 +190,19 @@
                 const targetElement = event.target.closest('[id]');
                 if (targetElement) {
                     switch (targetElement.id) {
-                        case app.element.darkModeToggle.id:
+                        case app.element.darkModeToggle?.id:
                             app.view.darkMode.toggle();
                             break;
-                        case app.element.navbarMenuOpen.id:
+                        case app.element.navbarMenuOpen?.id:
                             app.view.menu.toggle(app.element.navbarMenu, true);
                             break;
-                        case app.element.navbarMenuClose.id:
+                        case app.element.navbarMenuClose?.id:
                             app.view.menu.toggle(app.element.navbarMenu, false);
                             break;
-                        case app.element.sidebarMenuOpen.id:
+                        case app.element.sidebarMenuOpen?.id:
                             app.view.menu.toggle(app.element.sidebarMenu, true);
                             break;
-                        case app.element.sidebarMenuClose.id:
+                        case app.element.sidebarMenuClose?.id:
                             app.view.menu.toggle(app.element.sidebarMenu, false);
                             break;
                     }
