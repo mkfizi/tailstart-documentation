@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Tailstart Kit - Documentation v0.2.0: app.js
+ * Tailstart Kit - Documentation v0.2.1: app.js
  * Licensed under MIT (https://github.com/mkfizi/tailstart-kit-documentation/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -12,7 +12,7 @@
     const app = {};
 
     app.name = 'Tailstart Kit - Documentation';
-    app.version = '0.2.0';
+    app.version = '0.2.1';
     app.breakpointSize = 1024;
 
     app.element = {
@@ -76,11 +76,18 @@
                     currentToggleElement.setAttribute('aria-expanded', isOpen);
                 });
                 
-                // Toggle handlers
+
                 if (isOpen) {
-                    app.view.menu.clickOutside = app.view.menu.attachClickOutside(targetElement);
-                    app.view.menu.escape = app.view.menu.attachEscape(targetElement);
-                    app.view.menu.focusTrap = app.view.menu.attachFocusTrap(targetElement);
+                    // Force focus
+                    targetElement.setAttribute('tabindex', 1);
+                    targetElement.focus();
+                    setTimeout(() => {
+                        targetElement.removeAttribute('tabindex');
+                    }, 100);
+
+                    app.view.menu.clickOutside = app.view.menu.attachEvent(document, 'click', app.view.menu.clickOutsideHandler.bind(null, targetElement));
+                    app.view.menu.escape = app.view.menu.attachEvent(window, 'keydown', app.view.menu.escapeHandler.bind(null, targetElement));
+                    app.view.menu.focusTrap = app.view.menu.attachEvent(window, 'keydown', app.view.menu.focusTrapHandler.bind(null, targetElement));
                 } else {
                     if (app.view.menu.clickOutside != null) app.view.menu.clickOutside();
                     if (app.view.menu.escape != null) app.view.menu.escape();
@@ -88,64 +95,46 @@
                 }
             },
 
-            // Attach click outside offcanvas
-            attachClickOutside: targetElement => {
-                const clickOutsideHandler = event => {
-                    if (!event.target.closest(`[aria-labelledby="${targetElement.id}"]`) && !event.target.closest(`[aria-controls="${targetElement.id}"]`)) {
-                        app.view.menu.toggle(targetElement, false);
-                    }
-                }
-                document.addEventListener('click', clickOutsideHandler);
+            // Attach event
+            attachEvent: (element, eventType, handler) => {
+                element.addEventListener(eventType, handler);
                 return () => {
-                    document.removeEventListener('click', clickOutsideHandler);
+                    element.removeEventListener(eventType, handler);
                 }
             },
 
-            // Attach press escape key
-            attachEscape: targetElement => {
-                const escapeHandler = event => {
-                    if (event.key === 'Escape') {
-                        app.view.menu.toggle(targetElement, false);
-                    }
-                }
-                window.addEventListener('keydown', escapeHandler);
-                return () => {
-                    window.removeEventListener('keydown', escapeHandler);
+            // Click outside offcanvas handler
+            clickOutsideHandler: (targetElement, event) => {
+                if (!event.target.closest(`[aria-labelledby="${targetElement.id}"]`) && !event.target.closest(`[aria-controls="${targetElement.id}"]`)) {
+                    app.view.menu.toggle(targetElement, false);
                 }
             },
 
-            // Attach focus trap
-            attachFocusTrap: targetElement => {
-                // Toggle force focus on target element
-                targetElement.setAttribute('tabindex', 1);
-                targetElement.focus();
-                setTimeout(() => {
-                    targetElement.removeAttribute('tabindex');
-                }, 100);
-
-                const focusableElements = Array.from(targetElement.querySelectorAll('a, button, input, textarea, select, details, [tabindex], [contenteditable="true"]')).filter(element => {
-                    return !element.closest('[tabindex="-1"], .hidden, .invisible') || null;
-                });
-                const firstElement = focusableElements[0];
-                const lastElement = focusableElements[focusableElements.length - 1];
-                const focusTrapHandler = event => {
-                    if (event.type === 'keydown' && event.key === 'Tab') {
-                        if (event.shiftKey && (document.activeElement === firstElement || document.activeElement === document.body)) {
-                            event.preventDefault();
-                            lastElement.focus();
-                        } else if (!event.shiftKey && document.activeElement === lastElement) {
-                            event.preventDefault();
-                            firstElement.focus();
-                        }
-                    }
+            // Escape key handler
+            escapeHandler: (targetElement, event) => {
+                if (event.key === 'Escape') {
+                    app.view.menu.toggle(targetElement, false);
                 }
+            },
 
-                window.addEventListener('keydown', focusTrapHandler);
-                return () => {
-                    window.removeEventListener('keydown', focusTrapHandler);
+            // Focus trap handler
+            focusTrapHandler: (targetElement, event) => {
+                if (event.key === 'Tab') {
+                    const focusableElements = Array.from(targetElement.querySelectorAll('a, button, input, textarea, select, details, [tabindex], [contenteditable="true"]')).filter(element => {
+                        return !element.closest('[tabindex="-1"], .hidden, .invisible') || null;
+                    });
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+
+                    if (event.shiftKey && (document.activeElement === firstElement || document.activeElement === document.body)) {
+                        event.preventDefault();
+                        lastElement.focus();
+                    } else if (!event.shiftKey && document.activeElement === lastElement) {
+                        event.preventDefault();
+                        firstElement.focus();
+                    }
                 }
             }
-
         },
 
         sidebar: {
