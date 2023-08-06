@@ -16,10 +16,14 @@ Types of changes:
 ## [Unreleased]
 Put unreleased changes here.
 
+## [0.2.1] - 2023-08-07
+### Changed
+- Revise `app.view.menu` functions structure to sync with [component guide](https://github.com/mkfizi/components).
+
 ## [0.2.0] - 2023-07-23
 ### Changed
 - Revise `app.view.menu` functions structure.
-- Update menu classes to sync with [component guide](https://github.com/mkfizi/components)
+- Update menu classes to sync with [component guide](https://github.com/mkfizi/components).
 
 ## [0.1.0] - 2023-07-06
 ### Added
