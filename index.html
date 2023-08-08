@@ -69,7 +69,7 @@
         <div class="flex items-center justify-between w-full h-full max-w-screen-xl px-4 mx-auto sm:px-8">
             <div class="flex items-center gap-4">
                 <!-- Sidebar menu open button -->
-                <button type="button" class="lg:hidden group" id="sidebar-menu-open" aria-expanded="false" aria-label="Open sidebar menu">
+                <button id="sidebar-menu-open" type="button" class="lg:hidden group" aria-expanded="false" aria-label="Open sidebar menu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M4 6l16 0" />
@@ -90,7 +90,7 @@
                 <!-- Navbar menu -->
                 <div id="navbar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:block lg:visible bg-neutral-500/50 lg:bg-transparent lg:relative lg:w-auto lg:h-auto lg:left-auto lg:top-auto lg:z-0">
                     <div class="fixed top-0 left-0 w-full h-full p-4 overflow-y-auto bg-white lg:relative lg:h-auto lg:p-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
-                        <button type="button" class="absolute lg:hidden right-4 top-4 group" id="navbar-menu-close" aria-expanded="false" aria-label="Close navbar menu">
+                        <button id="navbar-menu-close" type="button" class="absolute lg:hidden right-4 top-4 group" aria-controls="navbar-menu" aria-expanded="false" aria-label="Close navbar menu">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M18 6l-12 12" />
@@ -110,13 +110,10 @@
                         </ul>
                     </div>
                 </div>
-
-                <!-- Navbar items divider -->
                 <div class="hidden w-px h-8 mx-4 lg:block bg-neutral-300 dark:bg-neutral-700"></div>
-
                 <div class="flex items-center gap-4">
                     <!-- Dark mode toggle button -->
-                    <button type="button" id="dark-mode-toggle" aria-label="Toggle dark mode" class="group">
+                    <button id="dark-mode-toggle" type="button" class="group" aria-label="Toggle dark mode">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:hidden stroke-neutral-600 group-hover:stroke-black" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
@@ -127,8 +124,6 @@
                             <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
                         </svg>
                     </button>
-
-                    <!-- Github -->
                     <a href="https://github.com/mkfizi/tailstart-kit-documentation" target="_blank" class="group">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -137,7 +132,7 @@
                     </a>
 
                     <!-- Navbar menu open button -->
-                    <button type="button" class="lg:hidden group" id="navbar-menu-open" aria-expanded="false" aria-label="Open navbar menu">
+                    <button id="navbar-menu-open" type="button" class="lg:hidden group" aria-controls="navbar-menu" aria-expanded="false" aria-label="Open navbar menu">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />

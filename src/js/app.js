@@ -29,7 +29,7 @@
         footerAppName: document.getElementById('footer-app-name'),
         footerAppVersion: document.getElementById('footer-app-version'),
     }
-    
+
     app.view = {
         viewportHeight: {
             // Workaround fix to handle viewport height issue on mobile browsers
@@ -49,7 +49,7 @@
                 if (app.element.footerAppName) {
                     app.element.footerAppName.innerHTML = app.name;
                 }
-                
+
                 if (app.element.footerAppVersion) {
                     app.element.footerAppVersion.innerHTML = app.version;
                 }
@@ -68,14 +68,14 @@
 
         menu: {
             toggle: (targetElement, isOpen) => {
-                targetElement.classList[isOpen? 'remove' : 'add']('hidden', 'invisible');
+                targetElement.classList[isOpen ? 'remove' : 'add']('hidden', 'invisible');
                 targetElement.setAttribute('aria-hidden', !isOpen);
 
                 // Set toggle element `[aria-expanded]` attribute value
                 document.querySelectorAll(`[aria-controls="${targetElement.id}"]`).forEach(currentToggleElement => {
                     currentToggleElement.setAttribute('aria-expanded', isOpen);
                 });
-                
+
 
                 if (isOpen) {
                     // Force focus
