@@ -58,7 +58,6 @@
             }
         },
 
-
         darkMode: {
             // Toggle dark mode
             toggle: () => {
