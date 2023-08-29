@@ -12,7 +12,7 @@
     const app = {};
 
     app.name = 'Tailstart - Documentation Starter Kit';
-    app.version = '0.2.1';
+    app.version = '0.3.0';
     app.breakpointSize = 1024;
 
     app.element = {
