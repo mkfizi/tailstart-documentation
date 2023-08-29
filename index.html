@@ -6,28 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
-
+    
     <!-- SEO -->
-    <meta name="title" content="Tailstart Kit">
-    <meta name="description" content="A handcrafted collection of TailwindCSS multipurpose starter kits, style guide, components and layouts.">
+    <meta name="title" content="Tailstart">
+    <meta name="description" content="TailwindCSS library of multipurpose starter kits and unified UI kits for FREE.">
     <meta name="robots" content="index, follow">
  
-     <!-- Facebook open graph -->
-     <meta property="og:url" content="https://mkfizi.dev/tailstart-kit">
-     <meta property="og:type" content="website">
-     <meta property="og:title" content="Tailstart Kit">
-     <meta property="og:image" content="https://https://mkfizi.dev/tailstart-kit/src/images/fb-og.jpg">
-     <meta property="og:description" content="A handcrafted collection of TailwindCSS multipurpose starter kits, style guide, components and layouts.">
-     <meta property="og:site_name" content="Tailstart Kit">
- 
-     <!-- Twitter cards -->
-     <meta name="twitter:card" content="summary">
-     <meta name="twitter:site" content="@mkfizi">
-     <meta name="twitter:creator" content="@mkfizi">
-     <meta name="twitter:url" content="https://mkfizi.dev/tailstart-kit">
-     <meta name="twitter:title" content="Tailstart Kit">
-     <meta name="twitter:description" content="A handcrafted collection of TailwindCSS multipurpose starter kits, style guide, components and layouts.">
-     <meta name="twitter:image" content="https://https://mkfizi.dev/tailstart-kit/src/images/tw-card.jpg">
+    <!-- Facebook open graph -->
+    <meta property="og:url" content="https://tailstart.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tailstart">
+    <meta property="og:image" content="https://tailstart.github.io/src/images/fb-og.jpg">
+    <meta name="description" content="TailwindCSS library of multipurpose starter kits and unified UI kits for FREE.">
+    <meta property="og:site_name" content="Tailstart">
+
+    <!-- Twitter cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@mkfizi">
+    <meta name="twitter:creator" content="@mkfizi">
+    <meta name="twitter:url" content="https://tailstart.github.io">
+    <meta name="twitter:title" content="Tailstart">
+    <meta name="twitter:description" content="TailwindCSS library of multipurpose starter kits and unified UI kits for FREE.">
+    <meta name="twitter:image" content="https://tailstart.github.io/src/images/tw-card.jpg">
 
     <!-- Favicon -->
     <link rel="manifest" href="./site.webmanifest">
@@ -61,17 +61,89 @@
         };
     </script>
 
-    <title>Tailstart Kit | Documentation</title>
+    <title>Tailstart | Documentation Starter Kit</title>
 </head>
 <body class="relative min-h-screen antialiased bg-white dark:bg-neutral-900">
 
     <!-- Navbar -->
-    <nav id="navbar" class="sticky top-0 z-10 w-full h-16 bg-white border-b border-neutral-200 dark:bg-neutral-900 dark:border-neutral-800">
-        <div class="flex items-center justify-between w-full h-full max-w-screen-xl px-4 mx-auto sm:px-8">
-            <div class="flex items-center gap-4">
+    <nav id="navbar" class="sticky top-0 z-10 w-full bg-white border-b border-neutral-200 dark:bg-neutral-900 dark:border-neutral-800">
+        <div class="divide-y divide-neutral-200 dark:divide-neutral-800">
+            <div class="flex items-center justify-between w-full h-16 max-w-screen-xl px-4 mx-auto sm:px-8">
 
-                <!-- Sidebar menu open button -->
-                <button id="sidebar-menu-open" type="button" class="lg:hidden group" aria-expanded="false" aria-label="Open sidebar menu">
+                <!-- Logo -->
+                <a href="./" class="flex gap-4">
+                    <img src="./src/images/logo.png" alt="Tailstart Kit Logo" class="w-6 h-6 dark:hidden">
+                    <img src="./src/images/logo-dark.png" alt="Tailstart Kit Logo" class="hidden w-6 h-6 dark:block">
+                    <span class="text-lg font-bold text-black dark:text-white">Tailstart</span>
+                </a>
+    
+                <div class="flex items-center gap-4">
+
+                    <!-- Navbar menu -->
+                    <div id="navbar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:block lg:visible bg-neutral-500/50 lg:bg-transparent lg:relative lg:w-auto lg:h-auto lg:left-auto lg:top-auto lg:z-0" aria-hidden="true">
+                        <div class="fixed top-0 left-0 w-full h-full p-4 overflow-y-auto bg-white lg:relative lg:h-auto lg:p-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
+                            <button id="navbar-menu-close" type="button" class="absolute lg:hidden right-4 top-4 group" aria-controls="navbar-menu" aria-expanded="false" aria-label="Close navbar menu">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M18 6l-12 12" />
+                                    <path d="M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <ul class="space-y-4 lg:space-y-0 lg:flex lg:gap-8">
+                                <li>
+                                    <a href="#" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Examples</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Showcases</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Developers</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Divider -->
+                    <div class="hidden w-px h-8 mx-4 lg:block bg-neutral-300 dark:bg-neutral-700"></div>
+                    
+                    <div class="flex items-center gap-4">
+    
+                        <!-- Dark mode toggle button -->
+                        <button id="dark-mode-toggle" type="button" class="group" aria-label="Toggle dark mode">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:hidden stroke-neutral-600 group-hover:stroke-black" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6 dark:block dark:stroke-neutral-400 group-hover:stroke-white" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                            </svg>
+                        </button>
+                        <a href="https://github.com/tailstart/starterkit-documentation" target="_blank" class="group">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                            </svg>
+                        </a>
+    
+                        <!-- Navbar menu toggle button -->
+                        <button id="navbar-menu-toggle" type="button" class="lg:hidden group" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navbar menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between h-12 max-w-screen-xl px-4 mx-auto lg:hidden sm:px-8">
+
+                <!-- Sidebar menu toggle button -->
+                <button id="sidebar-menu-toggle" type="button" class="group" aria-expanded="false" aria-label="Toggle sidebar menu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M4 6l16 0" />
@@ -79,153 +151,118 @@
                         <path d="M4 18l16 0" />
                     </svg>
                 </button>
-                
-                <!-- Logo -->
-                <a href="./" class="flex gap-4">
-                    <img src="./src/images/logo.png" alt="Tailstart Kit Logo" class="w-6 h-6 dark:hidden">
-                    <img src="./src/images/logo-dark.png" alt="Tailstart Kit Logo" class="hidden w-6 h-6 dark:block">
-                    <span class="text-lg font-bold text-black dark:text-white">Tailstart Kit</span>
-                </a>
-            </div>
 
-            <div class="flex items-center gap-4">
-
-                <!-- Navbar menu -->
-                <div id="navbar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:block lg:visible bg-neutral-500/50 lg:bg-transparent lg:relative lg:w-auto lg:h-auto lg:left-auto lg:top-auto lg:z-0">
-                    <div class="fixed top-0 left-0 w-full h-full p-4 overflow-y-auto bg-white lg:relative lg:h-auto lg:p-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
-                        <button id="navbar-menu-close" type="button" class="absolute lg:hidden right-4 top-4 group" aria-controls="navbar-menu" aria-expanded="false" aria-label="Close navbar menu">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M18 6l-12 12" />
-                                <path d="M6 6l12 12" />
-                            </svg>
-                        </button>
-                        <ul class="space-y-4 lg:space-y-0 lg:flex lg:gap-8">
-                            <li>
-                                <a href="#" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Example</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Showcase</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Developer</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="hidden w-px h-8 mx-4 lg:block bg-neutral-300 dark:bg-neutral-700"></div>
-                <div class="flex items-center gap-4">
-
-                    <!-- Dark mode toggle button -->
-                    <button id="dark-mode-toggle" type="button" class="group" aria-label="Toggle dark mode">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:hidden stroke-neutral-600 group-hover:stroke-black" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6 dark:block dark:stroke-neutral-400 group-hover:stroke-white" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-                        </svg>
-                    </button>
-                    <a href="https://github.com/mkfizi/tailstart-kit-documentation" target="_blank" class="group">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-                        </svg>
-                    </a>
-
-                    <!-- Navbar menu open button -->
-                    <button id="navbar-menu-open" type="button" class="lg:hidden group" aria-controls="navbar-menu" aria-expanded="false" aria-label="Open navbar menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                            <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                            <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                        </svg>
-                    </button>
-                </div>
+                <!-- Page menu toggle button -->
+                <button id="page-menu-toggle" type="button" class="flex gap-2 text-base font-semibold text-black dark:text-white" aria-expanded="false" aria-label="Toggle page nenu">
+                    <span>On this page</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-labelledby="page-menu">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M6 9l6 6l6 -6" />
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
-
-    <div class="grid max-w-screen-xl mx-auto lg:gap-8 lg:grid-cols-4">
+    
+    <div class="relative max-w-screen-xl px-4 mx-auto lg:flex sm:px-8 lg:gap-8">
         
         <!-- Sidebar menu -->
-        <aside>
-            <div id="sidebar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:left-auto bg-neutral-500/50 lg:bg-transparent lg:block lg:z-0 lg:visible lg:w-auto lg:pt-16" aria-hidden="true">
-                <div class="fixed top-0 left-0 h-full p-4 pb-24 overflow-y-auto bg-white lg:left-auto lg:top-auto w-72 dark:bg-neutral-800 drop-shadow-md lg:drop-shadow-none lg:bg-transparent lg:dark:bg-transparent lg:p-0 lg:relative lg:px-8 lg:pt-16 lg:pb-20" aria-labelledby="sidebar-menu">
-                    <button type="button" class="absolute right-4 top-4 group lg:hidden" id="sidebar-menu-close" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Close sidebar menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M18 6l-12 12" />
-                            <path d="M6 6l12 12" />
-                        </svg>
-                    </button>
-                    <ul class="space-y-6 marker:text-neutral-700 dark:marker:text-neutral-300">
-                        <li class="space-y-4">
-                            <a href="#introduction" class="block text-base font-semibold text-black dark:text-white">Introduction</a>
-                            <ul class="ml-4 space-y-3 marker:text-neutral-700 dark:marker:text-neutral-300">
-                                <li>
-                                    <a href="#overview" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Overview</a>
-                                </li>
-                                <li>
-                                    <a href="#statement-and-expression" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Statement and Expression</a>
-                                </li>
-                                <li>
-                                    <a href="#identifier" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Identifier</a>
-                                </li>
-                                <li>
-                                    <a href="#operator" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Operator</a>
-                                </li>
-                                <li>
-                                    <a href="#whitespace-and-line-break" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Whitespace and line break</a>
-                                </li>
-                                <li>
-                                    <a href="#coding-convention" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Coding Convention</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Features</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Configurations</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">API References</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Tutorials</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Troubleshoot</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Contributing</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Resources</a>
-                        </li>
-                    </ul>
-                </div>
+        <aside id="sidebar-menu" class="fixed top-0 left-0 z-10 invisible hidden w-screen h-screen lg:pt-16 lg:-mt-16 lg:z-0 lg:sticky lg:visible lg:block lg:w-48 lg:bg-transparent bg-neutral-500/50 lg:shrink-0" aria-hidden="true">
+            <div class="fixed top-0 left-0 h-full p-4 overflow-y-auto bg-white lg:p-0 lg:pt-16 lg:pb-36 lg:top-16 lg:sticky w-72 lg:w-48 lg:bg-transparent lg:dark:bg-transparent dark:bg-neutral-800 drop-shadow-md lg:drop-shadow-none" aria-labelledby="sidebar-menu">
+
+                <!-- Sidebar menu close button -->
+                <button type="button" class="absolute right-4 top-4 group lg:hidden" id="sidebar-menu-close" aria-controls="offcanvas" aria-expanded="false" aria-label="Close sidebar-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <!-- Sidebar menu items -->
+                <ul class="space-y-6">
+                    <li class="space-y-4">
+                        <a href="#" class="block text-base font-bold text-black dark:text-white">Introduction</a>
+                        <ul class="ml-4 space-y-3 marker:text-neutral-700 dark:marker:text-neutral-300">
+                            <li>
+                                <a href="#" class="block text-base font-semibold text-black dark:text-white">Getting Started</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Installation</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Features</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Configurations</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block text-base text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Tutorial</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">The Basics</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">API References</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">External Resources</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Troubleshooting</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Contributing</a>
+                    </li>
+                </ul>
             </div>
         </aside>
 
+        <!-- Page menu -->
+        <div class="sticky right-0 w-full mt-2 top-32 lg:w-48 lg:sticky lg:h-screen lg:order-2 lg:pt-16 lg:-mt-16 lg:top-0">
+            <ul id="page-menu" class="absolute right-0 z-10 invisible hidden w-full max-w-sm py-1 overflow-y-auto bg-white border rounded-md lg:pt-16 lg:top-16 lg:sticky lg:pb-36 lg:space-y-3 lg:max-h-none lg:py-0 lg:drop-shadow-none lg:border-0 lg:visible lg:h-full lg:block max-h-64 border-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 drop-shadow-md" aria-hidden="true" aria-labelledby="page-menu">
+                <li class="hidden lg:block">
+                    <p class="pb-1 text-base font-semibold text-black dark:text-white">On this page</p>
+                </li>
+                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800 lg:hover:bg-transparent lg:dark:hover:bg-transparent">
+                    <a href="#overview" class="block px-4 py-2 text-base lg:px-0 lg:py-0 text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Overview</a>
+                </li>
+                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800 lg:hover:bg-transparent lg:dark:hover:bg-transparent">
+                    <a href="#statement" class="block px-4 py-2 text-base lg:px-0 lg:py-0 text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Statement</a>
+                </li>
+                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800 lg:hover:bg-transparent lg:dark:hover:bg-transparent">
+                    <a href="#identifier" class="block px-4 py-2 text-base lg:px-0 lg:py-0 text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Identifier</a>
+                </li>
+                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800 lg:hover:bg-transparent lg:dark:hover:bg-transparent">
+                    <a href="#operator" class="block px-4 py-2 text-base lg:px-0 lg:py-0 text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Operator</a>
+                </li>
+                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800 lg:hover:bg-transparent lg:dark:hover:bg-transparent">
+                    <a href="#whitespace" class="block px-4 py-2 text-base lg:px-0 lg:py-0 text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-white">Whitespace</a>
+                </li>
+                <li class="hover:bg-neutral-100 dark:hover:bg-neutral-800 lg:hover:bg-transparent lg:dark:hover:bg-transparent">
+                    <a href="#coding-convention" class="block px-4 py-2 text-base lg:px-0 lg:py-0 text-neutral-600 dark:text-neutral-400 hover:text-black hover:dark:text-whit">Coding Convention</a>
+                </li>
+            </ul>
+        </div>
+
         <!-- Content -->
-        <main class="px-4 pt-16 pb-24 mx-auto space-y-16 lg:pb-20 lg:col-span-3 sm:px-8">
+        <main class="flex-1 pt-16 pb-40 mx-auto space-y-16 lg:pb-36">
             <header class="space-y-4">
-                <p class="text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">Introduction</p>
-                <p class="text-base text-neutral-700 dark:text-neutral-300">Welcome to the documentation for syntax. This library is designed to provide developers with a set of tools and utilities for building web applications. Whether you're a beginner or an experienced developer, this documentation will guide you through the library's features and help you get started with your web development projects.</p>
+                <div class="space-y-2">
+                    <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Introduction</span>
+                    <p class="text-2xl font-black text-black sm:text-3xl lg:text-4xl dark:text-white">Getting Started</p>
+                </div>
+                <p class="text-base text-black sm:text-lg lg:text-xl dark:text-white">Welcome to the documentation for syntax. This library is designed to provide developers with a set of tools and utilities for building web applications.</p>
             </header>
             <section id="overview" class="space-y-4 scroll-mt-32">
                 <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Overview</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Syntax is the set of rules that define how programs in JavaScript must be structured. It includes rules for how different types of statements are formatted, how variables are declared, how expressions are evaluated, and more.</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Understanding the syntax of JavaScript is crucial for writing code that is correct, understandable, and efficient. It enables you to express your ideas in a way that the JavaScript interpreter can understand.</p>
             </section>
-            <section id="statement-and-expression" class="space-y-4 scroll-mt-32">
-                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Statement and Expression</p>
+            <section id="statement" class="space-y-4 scroll-mt-32">
+                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Statement</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">In JavaScript, a statement is a standalone unit of execution. It typically corresponds to an action or a series of actions.</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">An expression is a piece of code that evaluates to a value. It can consist of variables, literals, operators, and function calls.</p>
             </section>
@@ -239,8 +276,8 @@
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Arithmetic operators are used to perform mathematical operations. They include <strong>+</strong> (addition), <strong>-</strong> (subtraction), <strong>*</strong> (multiplication), <strong>/</strong> (division), and <strong>%</strong> (modulus).</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">JavaScript has a set of reserved words that cannot be used as identifiers. These include keywords such as <strong>if</strong>, <strong>else</strong>, <strong>function</strong>, <strong>return</strong>, etc.</p>
             </section>
-            <section id="whitespace-and-line-break" class="space-y-4 scroll-mt-32">
-                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Whitespace and line break</p>
+            <section id="whitespace" class="space-y-4 scroll-mt-32">
+                <p class="text-lg font-bold text-black sm:text-xl lg:text-2xl dark:text-white">Whitespace</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Whitespace characters (spaces, tabs, and newlines) can be used to make the code more readable. They can be used in between operators, keywords, and identifiers.</p>
                 <p class="text-base text-neutral-700 dark:text-neutral-300">Line breaks can be used to separate statements, improving code readability. Each statement in JavaScript should ideally be on a separate line.</p>
             </section>
@@ -251,13 +288,11 @@
             </section>
         </main>
     </div>
-            
+
     <!-- Footer -->
-    <div class="absolute bottom-0 grid w-full max-w-screen-xl gap-8 mx-auto transform -translate-x-1/2 left-1/2 lg:grid-cols-4">
-        <footer class="flex flex-col items-center justify-between px-4 pb-px lg:flex-row lg:col-span-3 lg:col-start-2 sm:px-8">
-            <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
-            <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="inline-block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">mkfizi</a></span>
-        </footer>
-    </div>
+    <footer class="absolute bottom-0 flex flex-col items-center justify-between w-full max-w-screen-xl px-4 pb-px transform -translate-x-1/2 sm:flex-row left-1/2 sm:px-8 lg:px-64">
+        <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
+        <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="inline-block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">mkfizi</a></span>
+    </footer>
 </body>
 </html>
