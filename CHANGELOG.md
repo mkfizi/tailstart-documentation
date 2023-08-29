@@ -16,7 +16,7 @@ Types of changes:
 ## [Unreleased]
 Put unreleased changes here.
 
-## [0.3.0] - 2023-08-29
+## [0.3.0] - 2023-08-30
 ### Added
 - On this page menu.
 
@@ -24,7 +24,7 @@ Put unreleased changes here.
 - Revise navbar.
 - Revise layout appearance.
 - Revise menu overall behaviour.
-
+- Revise footer appearance.
 
 ## [0.2.1] - 2023-08-07
 ### Changed
