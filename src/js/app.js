@@ -79,7 +79,7 @@
                 targetElement.setAttribute('aria-hidden', !isOpen);
 
                 // Set toggle element `[aria-expanded]` attribute value
-                document.querySelectorAll(`[aria-controls="${targetElement.id}"]`).forEach(currentToggleElement => {
+                document.querySelectorAll(`[aria-controls="${targetElement.id}"]`).forEach((currentToggleElement) => {
                     currentToggleElement.setAttribute('aria-expanded', isOpen);
                 });
 
