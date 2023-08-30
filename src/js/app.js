@@ -34,7 +34,7 @@
 
     app.view = {
         viewportHeight: {
-            
+
             // Workaround fix to handle viewport height issue on mobile browsers
             // https://stackoverflow.com/questions/37112218/css3-100vh-not-constant-in-mobile-browser
             toggle: () => {
@@ -110,7 +110,7 @@
                 }
             },
 
-            // Click outside offcanvas handler
+            // Click outside handler
             clickOutsideHandler: (targetElement, event) => {
                 if (!event.target.closest(`[aria-labelledby="${targetElement.id}"]`) && !event.target.closest(`[aria-controls="${targetElement.id}"]`)) {
                     app.view.menu.toggle(targetElement, false);
