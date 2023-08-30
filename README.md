@@ -1,6 +1,9 @@
 # Tailstart - Documentation Starter Kit
 [Tailstart](https://tailstart.github.io) documentation starter kit.
 
+## Variant
+- [AlpineJS](https://github.com/tailstart/starterkit-boilerplate-alpinejs)
+
 ## Features
 * Dark mode toggle: Users can switch between light and dark modes for better readability and preference.
 * [Viewport height mobile browser issue](https://stackoverflow.com/questions/37112218/css3-100vh-not-constant-in-mobile-browser) fix: Ensures consistent rendering of elements using the `vh` unit across different mobile browsers.
