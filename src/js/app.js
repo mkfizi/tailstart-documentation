@@ -182,6 +182,7 @@
 
     app.event = {
         document: {
+            
             // Handle document 'click event
             click: event => {
                 const targetElement = event.target.closest('[id]');
@@ -211,6 +212,7 @@
         },
 
         window: {
+
             // Handle window 'resize' event
             resize: () => {
                 app.view.viewportHeight.toggle();
