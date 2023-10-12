@@ -83,8 +83,8 @@
                     currentToggleElement.setAttribute('aria-expanded', isOpen);
                 });
 
-                // Execute event handlers
                 if (isOpen) {
+
                     // Force focus for focus trap
                     targetElement.setAttribute('tabindex', 1);
                     targetElement.focus();
@@ -93,19 +93,27 @@
                     }, 100);
 
                     if (!app.view.menu[targetElement.id]) {
+
+                        // Create new menu object instance
                         app.view.menu[targetElement.id] = {
                             clickOutside: (event) => app.view.menu.clickOutsideHandler(targetElement, event),
                             escape: (event) => app.view.menu.escapeHandler(targetElement, event),
                             focusTrap: (event) => app.view.menu.focusTrapHandler(targetElement, event),
                         };
+
+                        // Add event listeners to menu object instance
                         document.addEventListener('click', app.view.menu[targetElement.id].clickOutside);
                         window.addEventListener('keydown', app.view.menu[targetElement.id].escape);
                         window.addEventListener('keydown', app.view.menu[targetElement.id].focusTrap);
                     }
                 } else if (app.view.menu[targetElement.id]) {
+
+                    // Remove event listeners to menu object instance
                     document.removeEventListener('click', app.view.menu[targetElement.id].clickOutside);
                     window.removeEventListener('keydown', app.view.menu[targetElement.id].escape);
                     window.removeEventListener('keydown', app.view.menu[targetElement.id].focusTrap);
+
+                    // Delete menu object instance
                     delete app.view.menu[targetElement.id];
                 }
             },
@@ -182,7 +190,7 @@
 
     app.event = {
         document: {
-            
+
             // Handle document 'click event
             click: event => {
                 const targetElement = event.target.closest('[id]');
