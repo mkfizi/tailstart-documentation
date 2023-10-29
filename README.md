@@ -1,7 +1,7 @@
 # Tailstart - Documentation
 TailwindCSS documentation starter kit.
 
-## Variant
+## Variants
 - [Javascript](https://github.com/mkfizi/tailstart-documentation)
 - [AlpineJS](https://github.com/mkfizi/tailstart-documentation-alpinejs)
 
