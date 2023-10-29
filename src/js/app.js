@@ -1,31 +1,30 @@
 /**
  * --------------------------------------------------------------------------
- * Tailstart - Documentation Starter Kit v0.3.0: app.js
- * Licensed under MIT (https://github.com/tailstart/starterkit-documentation/blob/main/LICENSE)
+ * Tailstart - Documentation v0.4.0: app.js
+ * Licensed under MIT (https://github.com/mkfizi/tailstart-documentation/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-
 
 (function () {
     'use strict';
 
     const app = {};
 
-    app.name = 'Tailstart - Documentation Starter Kit';
-    app.version = '0.3.0';
+    app.name = 'Tailstart - Documentation';
+    app.version = '0.4.0';
     app.breakpointSize = 1024;
 
     app.element = {
         navbar: document.getElementById('navbar'),
         navbarMenu: document.getElementById('navbar-menu'),
-        navbarMenuToggle: document.getElementById('navbar-menu-toggle'),
+        navbarMenuOpen: document.getElementById('navbar-menu-open'),
         navbarMenuClose: document.getElementById('navbar-menu-close'),
-        sidebarMenu: document.getElementById('sidebar-menu'),
-        sidebarMenuToggle: document.getElementById('sidebar-menu-toggle'),
-        sidebarMenuClose: document.getElementById('sidebar-menu-close'),
-        pageMenu: document.getElementById('page-menu'),
-        pageMenuToggle: document.getElementById('page-menu-toggle'),
         darkModeToggle: document.getElementById('dark-mode-toggle'),
+        sidebarMenu: document.getElementById('sidebar-menu'),
+        sidebarMenuOpen: document.getElementById('sidebar-menu-open'),
+        sidebarMenuClose: document.getElementById('sidebar-menu-close'),
+        onThisPageMenu: document.getElementById('on-this-page-menu'),
+        onThisPageMenuToggle: document.getElementById('on-this-page-menu-toggle'),
         sections: document.querySelectorAll('section'),
         footerCurrentYear: document.getElementById('footer-year'),
         footerAppName: document.getElementById('footer-app-name'),
@@ -33,6 +32,7 @@
     }
 
     app.view = {
+
         viewportHeight: {
 
             // Workaround fix to handle viewport height issue on mobile browsers
@@ -42,98 +42,68 @@
             }
         },
 
-        footer: {
-
-            // Toggle footer content with current year, app name and version
-            toggle: () => {
-                if (app.element.footerCurrentYear) {
-                    app.element.footerCurrentYear.innerHTML = new Date().getFullYear();
-                }
-
-                if (app.element.footerAppName) {
-                    app.element.footerAppName.innerHTML = app.name;
-                }
-
-                if (app.element.footerAppVersion) {
-                    app.element.footerAppVersion.innerHTML = app.version;
-                }
-            }
-        },
-
-        darkMode: {
-
-            // Toggle dark mode
-            toggle: () => {
-                const isDarkMode = localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches);
-                localStorage.theme = isDarkMode ? 'dark' : 'light';
-                document.documentElement.classList.toggle('dark', isDarkMode);
-            }
-        },
-
         menu: {
 
+            // Open menu
+            open: (targetElement) => app.view.menu.toggle(targetElement, true),
+
+            // Close menu
+            close: (targetElement) => app.view.menu.toggle(targetElement, false),
+        
             // Toggle menu
-            toggle: (targetElement, isOpen = null) => {
-                if (isOpen == null) isOpen = (targetElement.getAttribute('aria-hidden') === 'true');
+            toggle: (targetElement, isOpen) => {
                 targetElement.classList[isOpen ? 'remove' : 'add']('hidden', 'invisible');
                 targetElement.setAttribute('aria-hidden', !isOpen);
 
                 // Set toggle element `[aria-expanded]` attribute value
-                document.querySelectorAll(`[aria-controls="${targetElement.id}"]`).forEach((currentToggleElement) => {
+                document.querySelectorAll(`[aria-controls='${targetElement.id}']`).forEach((currentToggleElement) => {
                     currentToggleElement.setAttribute('aria-expanded', isOpen);
                 });
+            },
 
-                if (isOpen) {
+            // Handle when switching view between breakpoint size
+            toggleResponsive: (targetView, targetElement) => {
 
-                    // Force focus for focus trap
-                    targetElement.setAttribute('tabindex', 1);
-                    targetElement.focus();
-                    setTimeout(() => {
-                        targetElement.removeAttribute('tabindex');
-                    }, 100);
 
-                    if (!app.view.menu[targetElement.id]) {
-
-                        // Create new menu object instance
-                        app.view.menu[targetElement.id] = {
-                            clickOutside: (event) => app.view.menu.clickOutsideHandler(targetElement, event),
-                            escape: (event) => app.view.menu.escapeHandler(targetElement, event),
-                            focusTrap: (event) => app.view.menu.focusTrapHandler(targetElement, event),
-                        };
-
-                        // Add event listeners to menu object instance
-                        document.addEventListener('click', app.view.menu[targetElement.id].clickOutside);
-                        window.addEventListener('keydown', app.view.menu[targetElement.id].escape);
-                        window.addEventListener('keydown', app.view.menu[targetElement.id].focusTrap);
+                // If window width past breakpoint size, close navbar menu and remove `[aria-hidden]` attribute from it
+                if (window.innerWidth >= app.breakpointSize) {
+                    if (targetElement.getAttribute('aria-hidden') === 'false') {
+                        targetView.close();
                     }
-                } else if (app.view.menu[targetElement.id]) {
-
-                    // Remove event listeners to menu object instance
-                    document.removeEventListener('click', app.view.menu[targetElement.id].clickOutside);
-                    window.removeEventListener('keydown', app.view.menu[targetElement.id].escape);
-                    window.removeEventListener('keydown', app.view.menu[targetElement.id].focusTrap);
-
-                    // Delete menu object instance
-                    delete app.view.menu[targetElement.id];
+                    
+                    targetElement.removeAttribute('aria-hidden');
+                } else {
+                    if (!targetElement.getAttribute('aria-hidden')) {
+                        targetElement.setAttribute('aria-hidden', true);
+                    }
                 }
             },
 
+            // Force focus on element before initialize focus trap
+            forceFocus: (targetElement) => {
+                targetElement.setAttribute('tabindex', 1);
+                targetElement.focus();
+                setTimeout(() => {
+                    targetElement.removeAttribute('tabindex');
+                }, 100);
+            },
+
             // Click outside handler
-            clickOutsideHandler: (targetElement, event) => {
+            clickOutside: (targetView, targetElement, event) => {
                 if (!event.target.closest(`[aria-labelledby="${targetElement.id}"]`) && !event.target.closest(`[aria-controls="${targetElement.id}"]`)) {
-                    app.view.menu.toggle(targetElement, false);
+                    targetView.close(targetElement);
                 }
             },
 
             // Escape key handler
-            escapeHandler: (targetElement, event) => {
+            escape: (targetView, targetElement, event) => {
                 if (event.key === 'Escape') {
-                    app.view.menu.toggle(targetElement, false);
+                    targetView.close(targetElement);
                 }
             },
 
             // Focus trap handler
-            focusTrapHandler: (targetElement, event) => {
+            focusTrap: (targetElement, event) => {
                 if (event.key === 'Tab') {
                     const focusableElements = Array.from(targetElement.querySelectorAll('a, button, input, textarea, select, details, [tabindex], [contenteditable="true"]')).filter(currentElement => {
                         return !currentElement.closest('[tabindex="-1"], .hidden, .invisible') || null;
@@ -149,70 +119,206 @@
                         firstElement.focus();
                     }
                 }
-            }
-        },
+            },
 
-        page: {
-            menu: {
+            navbar: {
+
+                // Open navbar menu
+                open: () => {
+                    app.view.menu.open(app.element.navbarMenu);
+                    app.view.menu.forceFocus(app.element.navbarMenu);
+
+                    app.view.menu.navbar.escape = (event) => app.view.menu.escape(app.view.menu.navbar, app.element.navbarMenu, event)
+                    app.view.menu.navbar.focusTrap = (event) => app.view.menu.focusTrap(app.element.navbarMenu, event)
+
+                    window.addEventListener('keydown', app.view.menu.navbar.escape);
+                    window.addEventListener('keydown', app.view.menu.navbar.focusTrap);
+                },
+
+                // Close navbar menu
+                close: () => {
+                    app.view.menu.close(app.element.navbarMenu);
+
+                    window.removeEventListener('keydown', app.view.menu.navbar.escape);
+                    window.removeEventListener('keydown', app.view.menu.navbar.focusTrap);
+                },
+
+                // Toggle navbar appearance base on window scroll Y position
+                toggleScroll: () => {
+                    if (app.element.navbar) {
+                        const isScrolled = window.scrollY > (app.element.navbar.offsetHeight - app.element.navbar.clientHeight);
+                        app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-200', 'dark:border-neutral-800', 'shadow');
+                        app.element.navbar.classList[isScrolled ? 'remove' : 'add']('border-transparent', 'dark:border-transparent');
+                    }
+                },
+
+                // Handle when switching view between breakpoint size
+                toggleResponsive: () => {
+                    app.view.menu.toggleResponsive(app.view.menu.navbar, app.element.navbarMenu);
+                }
+            },
+
+            sidebar: {
+
+                // Open sidebar menu
+                open: () => {
+                    app.view.menu.open(app.element.sidebarMenu);
+                    app.view.menu.forceFocus(app.element.sidebarMenu);
+
+                    app.view.menu.sidebar.clickOutside = (event) => app.view.menu.clickOutside(app.view.menu.sidebar, app.element.sidebarMenu, event)
+                    app.view.menu.sidebar.escape = (event) => app.view.menu.escape(app.view.menu.sidebar, app.element.sidebarMenu, event)
+                    app.view.menu.sidebar.focusTrap = (event) => app.view.menu.focusTrap(app.element.sidebarMenu, event)
+
+                    window.addEventListener('click', app.view.menu.sidebar.clickOutside);
+                    window.addEventListener('keydown', app.view.menu.sidebar.escape);
+                    window.addEventListener('keydown', app.view.menu.sidebar.focusTrap);
+                },
+
+                // Close sidebar menu
+                close: () => {
+                    app.view.menu.close(app.element.sidebarMenu);
+
+                    window.removeEventListener('click', app.view.menu.sidebar.clickOutside);
+                    window.removeEventListener('keydown', app.view.menu.sidebar.escape);
+                    window.removeEventListener('keydown', app.view.menu.sidebar.focusTrap);
+                },
+
+                // Handle when switching view between breakpoint size
+                toggleResponsive: () => {
+                    app.view.menu.toggleResponsive(app.view.menu.sidebar, app.element.sidebarMenu);
+                }
+            },
+
+            onThisPage: {
+
+                // Open on this page menu
+                open: () => {
+                    app.view.menu.open(app.element.onThisPageMenu);
+
+                    app.view.menu.onThisPage.clickOutside = (event) => app.view.menu.clickOutside(app.view.menu.onThisPage, app.element.onThisPageMenu, event)
+                    app.view.menu.onThisPage.escape = (event) => app.view.menu.escape(app.view.menu.onThisPage, app.element.onThisPageMenu, event)
+
+                    window.addEventListener('click', app.view.menu.onThisPage.clickOutside);
+                    window.addEventListener('keydown', app.view.menu.onThisPage.escape);
+                },
+
+                // Close on this page menu
+                close: () => {
+                    app.view.menu.close(app.element.onThisPageMenu);
+
+                    window.removeEventListener('click', app.view.menu.onThisPage.clickOutside);
+                    window.removeEventListener('keydown', app.view.menu.onThisPage.escape);
+                },
+
+                // Toggle on this page menu
+                toggle: () => {
+                    let isOpen = (app.element.onThisPageMenu.getAttribute('aria-hidden') === 'true');
+
+                    isOpen 
+                        ? app.view.menu.onThisPage.open()
+                        : app.view.menu.onThisPage.close();
+                },
 
                 // Toggle active on this page menu link
                 toggleActiveLink: () => {
                     const scrollPosition = window.scrollY;
+
+                    // Calculate each sections height and offset from document top
                     app.element.sections.forEach((targetSection) => {
                         const sectionTop = targetSection.offsetTop - app.element.navbar.offsetHeight - parseFloat(getComputedStyle(targetSection).marginTop);
                         const sectionHeight = targetSection.offsetHeight + parseFloat(getComputedStyle(targetSection).marginTop);
 
+                        // Check if current scroll postion is within section area
                         let isActive = false;
                         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                             isActive = true;
                         }
 
-                        const targetLink = document.querySelector(`a[href="#${targetSection.id}"]`);
+                        const targetLink = app.element.onThisPageMenu.querySelector(`a[href='#${targetSection.id}']`);
                         if (targetLink) {
-                            targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
+                            targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white', 'font-medium');
                             targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
-                            if (!targetLink.classList.contains('font-semibold')) {
-                                targetLink.classList[isActive ? 'add' : 'remove']('font-medium');
-                            }
                         }
                     });
                 },
+
+                // Handle when switching view between breakpoint size
+                toggleResponsive: () => {
+                    app.view.menu.toggleResponsive(app.view.menu.onThisPage, app.element.onThisPageMenu);
+                }
+            }
+        },
+
+        darkMode: {
+
+            // Toggle dark mode
+            toggle: () => {
+                const isDarkMode = localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches);
+                localStorage.theme = isDarkMode ? 'dark' : 'light';
+                document.documentElement.classList.toggle('dark', isDarkMode);
+            }
+        },
+
+        footer: {
+
+            // Initialize footer content with current year, app name and version
+            init: () => {
+                if (app.element.footerCurrentYear) {
+                    app.element.footerCurrentYear.innerHTML = new Date().getFullYear();
+                }
+
+                if (app.element.footerAppName) {
+                    app.element.footerAppName.innerHTML = app.name;
+                }
+
+                if (app.element.footerAppVersion) {
+                    app.element.footerAppVersion.innerHTML = app.version;
+                }
             }
         },
 
         // Initialize view
         init: () => {
             app.view.viewportHeight.toggle();
-            app.view.footer.toggle();
-            app.view.page.menu.toggleActiveLink();
+            app.view.menu.navbar.toggleResponsive();
+            app.view.menu.sidebar.toggleResponsive();
+            app.view.menu.onThisPage.toggleResponsive();
+            app.view.footer.init();
         }
     }
 
     app.event = {
         document: {
 
-            // Handle document 'click event
+            // Handle document 'click' event by attaching a global click event listener instead of applying it on every clickable elements
             click: event => {
                 const targetElement = event.target.closest('[id]');
                 if (targetElement) {
+
+                    // Delegate method calls using switch case on element id
                     switch (targetElement.id) {
                         case app.element.darkModeToggle?.id:
                             app.view.darkMode.toggle();
                             break;
-                        case app.element.navbarMenuToggle?.id:
-                            app.view.menu.toggle(app.element.navbarMenu);
+
+                        case app.element.navbarMenuOpen?.id:
+                            app.view.menu.navbar.open();
                             break;
+
                         case app.element.navbarMenuClose?.id:
-                            app.view.menu.toggle(app.element.navbarMenu, false);
+                            app.view.menu.navbar.close();
                             break;
-                        case app.element.sidebarMenuToggle?.id:
-                            app.view.menu.toggle(app.element.sidebarMenu);
+
+                        case app.element.sidebarMenuOpen?.id:
+                            app.view.menu.sidebar.open();
                             break;
+
                         case app.element.sidebarMenuClose?.id:
-                            app.view.menu.toggle(app.element.sidebarMenu, false);
+                            app.view.menu.sidebar.close();
                             break;
-                        case app.element.pageMenuToggle?.id:
-                            app.view.menu.toggle(app.element.pageMenu);
+
+                        case app.element.onThisPageMenuToggle?.id:
+                            app.view.menu.onThisPage.toggle();
                             break;
                     }
                 }
@@ -220,28 +326,19 @@
         },
 
         window: {
-
+            
             // Handle window 'resize' event
             resize: () => {
                 app.view.viewportHeight.toggle();
-
-                // Close menu if window size is more than breakpoint size
-                if (window.innerWidth >= app.breakpointSize) {
-                    if (app.element.navbarMenu && app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
-                        app.view.menu.toggle(app.element.navbarMenu, false);
-                    }
-                    if (app.element.sidebarMenu && app.element.sidebarMenu.getAttribute('aria-hidden') === 'false') {
-                        app.view.menu.toggle(app.element.sidebarMenu, false);
-                    }
-                    if (app.element.pageMenu && app.element.pageMenu.getAttribute('aria-hidden') === 'false') {
-                        app.view.menu.toggle(app.element.pageMenu, false);
-                    }
-                }
+                app.view.menu.navbar.toggleResponsive();
+                app.view.menu.sidebar.toggleResponsive();
+                app.view.menu.onThisPage.toggleResponsive();
             },
 
             // Handle window 'scroll' event
             scroll: () => {
-                app.view.page.menu.toggleActiveLink();
+                app.view.menu.navbar.toggleScroll();
+                app.view.menu.onThisPage.toggleActiveLink();
             }
         },
 
