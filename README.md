@@ -1,17 +1,19 @@
-# Tailstart - Documentation Starter Kit
-[Tailstart](https://tailstart.github.io) documentation starter kit.
+# Tailstart - Documentation
+TailwindCSS documentation starter kit.
 
 ## Variant
-- [AlpineJS](https://github.com/tailstart/starterkit-boilerplate-alpinejs)
+- [Javascript](https://github.com/mkfizi/tailstart-documentation)
+- [AlpineJS](https://github.com/mkfizi/tailstart-documentation-alpinejs)
 
 ## Features
 * Dark mode toggle: Users can switch between light and dark modes for better readability and preference.
 * [Viewport height mobile browser issue](https://stackoverflow.com/questions/37112218/css3-100vh-not-constant-in-mobile-browser) fix: Ensures consistent rendering of elements using the `vh` unit across different mobile browsers.
-* Accesibility compliant: The website is designed with accessibility considerations in mind to provide a better user experience for all users.
+* Accesibility compliant and best practices: Website is designed with accessibility considerations in mind to provide a better user experience for all users while using best practices.
 * SEO-friendly metadata and social media tags: Includes relevant metadata and tags to optimize the website for search engines and improve social media sharing.
-* Active section highlighting: Page menu highlights the active section based on the user's scroll position for better navigation.
-* Focus trap: Ensures proper keyboard navigation within the navbar, sidebar and page menu, allowing users to easily navigate through menu items using the Tab key.
-* Click outside handler: The sidebar and page menu features a click outside handler, which automatically closes the menu when users click outside of it when in mobile view.
+* Sticky navbar with appearance toggle: Navbar remains fixed at the top of the page, and its appearance dynamically changes based on current scroll position.
+* Responsive menu with click outside, escape key and focus trap handler: Menus are programmed with proper keyboard navigation and responsive behaviour on all screen sizes.
+* On this page menu active link toggle: On this page menu links change appearance based or current scroll position which correspond to current viewed section.
+
 
 ## Installation
 Clone this repository to get started.
@@ -34,4 +36,4 @@ This starter kit serves as a boilerplate for creating web applications or sites.
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-[MIT](https://github.com/tailstart/starterkit-documentation/blob/main/LICENSE)
+[MIT](https://github.com/mkfizi/tailstart-documentation/blob/main/LICENSE)
