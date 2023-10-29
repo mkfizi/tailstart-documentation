@@ -16,6 +16,12 @@ Types of changes:
 ## [Unreleased]
 Put unreleased changes here.
 
+## [0.4.0] - 2023-10-30
+### Changed
+- Rewrite `app.js` method declaration.
+- Revise `404.html` page.
+- Revise content.
+
 ## [0.3.0] - 2023-08-30
 ### Added
 - On this page menu.
@@ -28,12 +34,12 @@ Put unreleased changes here.
 
 ## [0.2.1] - 2023-08-07
 ### Changed
-- Revise `app.view.menu` functions structure to sync with [component guide](https://github.com/mkfizi/components).
+- Revise `app.view.menu` functions structure.
 
 ## [0.2.0] - 2023-07-23
 ### Changed
 - Revise `app.view.menu` functions structure.
-- Update menu classes to sync with [component guide](https://github.com/mkfizi/components).
+- Update menu classes.
 
 ## [0.1.0] - 2023-07-06
 ### Added
