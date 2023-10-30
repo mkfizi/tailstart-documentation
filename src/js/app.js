@@ -70,7 +70,7 @@
                     if (targetElement.getAttribute('aria-hidden') === 'false') {
                         targetView.close();
                     }
-                    
+
                     targetElement.removeAttribute('aria-hidden');
                 } else {
                     if (!targetElement.getAttribute('aria-hidden')) {
@@ -146,7 +146,7 @@
                 // Toggle navbar appearance base on window scroll Y position
                 toggleScroll: () => {
                     if (app.element.navbar) {
-                        const isScrolled = window.scrollY > (app.element.navbar.offsetHeight - app.element.navbar.clientHeight);
+                        const isScrolled = window.scrollY > 0;
                         app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-200', 'dark:border-neutral-800', 'shadow');
                         app.element.navbar.classList[isScrolled ? 'remove' : 'add']('border-transparent', 'dark:border-transparent');
                     }
