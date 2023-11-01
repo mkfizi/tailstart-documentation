@@ -286,6 +286,7 @@
             app.view.menu.navbar.toggleResponsive();
             app.view.menu.sidebar.toggleResponsive();
             app.view.menu.onThisPage.toggleResponsive();
+            app.view.menu.onThisPage.toggleActiveLink();
             app.view.footer.init();
         }
     }
