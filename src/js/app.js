@@ -65,7 +65,7 @@
             toggleResponsive: (targetView, targetElement) => {
 
 
-                // If window width past breakpoint size, close navbar menu and remove `[aria-hidden]` attribute from it
+                // If window width past breakpoint size, close menu and remove `[aria-hidden]` attribute from it
                 if (window.innerWidth >= app.breakpointSize) {
                     if (targetElement.getAttribute('aria-hidden') === 'false') {
                         targetView.close();
@@ -90,6 +90,9 @@
 
             // Click outside handler
             clickOutside: (targetView, targetElement, event) => {
+
+                // Check if closest element to `event.target` is not the element where its `[aria-labelledby]`
+                // or `[aria-controls]` values does not equal to `targetElement.id` value
                 if (!event.target.closest(`[aria-labelledby="${targetElement.id}"]`) && !event.target.closest(`[aria-controls="${targetElement.id}"]`)) {
                     targetView.close(targetElement);
                 }
