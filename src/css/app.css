@@ -871,8 +871,12 @@ video {
   stroke: #525252;
 }
 
-.p-1 {
-  padding: 0.25rem;
+.p-0 {
+  padding: 0px;
+}
+
+.p-0\.5 {
+  padding: 0.125rem;
 }
 
 .p-4 {
