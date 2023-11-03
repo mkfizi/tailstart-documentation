@@ -16,11 +16,12 @@ Types of changes:
 ## [Unreleased]
 Put unreleased changes here.
 
-## [0.4.0] - 2023-10-30
+## [0.4.0] - 2023-11-04
 ### Changed
 - Rewrite `app.js` method declaration.
 - Revise `404.html` page.
 - Revise content.
+- Change link colours to `neutral-500` for light mode.
 
 ## [0.3.0] - 2023-08-30
 ### Added
