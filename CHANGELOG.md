@@ -22,6 +22,7 @@ Put unreleased changes here.
 - Revise `404.html` page.
 - Revise content.
 - Change link colours to `neutral-500` for light mode.
+- Change `drop-shadow-md` to `shadow`.
 
 ## [0.3.0] - 2023-08-30
 ### Added
