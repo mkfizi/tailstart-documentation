@@ -283,10 +283,20 @@
         // Initialize view
         init: () => {
             app.view.viewportHeight.toggle();
-            app.view.menu.navbar.toggleResponsive();
-            app.view.menu.sidebar.toggleResponsive();
-            app.view.menu.onThisPage.toggleResponsive();
-            app.view.menu.onThisPage.toggleActiveLink();
+            
+            if(app.element.navbarMenu) {
+                app.view.menu.navbar.toggleResponsive();
+            }
+
+            if(app.element.sidebarMenu) {
+                app.view.menu.sidebar.toggleResponsive();
+            }
+
+            if(app.element.onThisPageMenu) {
+                app.view.menu.onThisPage.toggleResponsive();
+                app.view.menu.onThisPage.toggleActiveLink();
+            }
+
             app.view.footer.init();
         }
     }
@@ -334,15 +344,29 @@
             // Handle window 'resize' event
             resize: () => {
                 app.view.viewportHeight.toggle();
-                app.view.menu.navbar.toggleResponsive();
-                app.view.menu.sidebar.toggleResponsive();
-                app.view.menu.onThisPage.toggleResponsive();
+            
+                if(app.element.navbarMenu) {
+                    app.view.menu.navbar.toggleResponsive();
+                }
+
+                if(app.element.sidebarMenu) {
+                    app.view.menu.sidebar.toggleResponsive();
+                }
+
+                if(app.element.onThisPageMenu) {
+                    app.view.menu.onThisPage.toggleResponsive();
+                }
             },
 
             // Handle window 'scroll' event
             scroll: () => {
-                app.view.menu.navbar.toggleScroll();
-                app.view.menu.onThisPage.toggleActiveLink();
+                if(app.element.navbarMenu) {
+                    app.view.menu.navbar.toggleScroll();
+                }
+
+                if(app.element.onThisPageMenu) {
+                    app.view.menu.onThisPage.toggleActiveLink();
+                }
             }
         },
 
