@@ -283,15 +283,15 @@
         init: () => {
             app.view.viewportHeight.toggle();
             
-            if(app.element.navbarMenu) {
+            if (app.element.navbarMenu) {
                 app.view.menu.navbar.toggleResponsive();
             }
 
-            if(app.element.sidebarMenu) {
+            if (app.element.sidebarMenu) {
                 app.view.menu.sidebar.toggleResponsive();
             }
 
-            if(app.element.onThisPageMenu) {
+            if (app.element.onThisPageMenu) {
                 app.view.menu.onThisPage.toggleResponsive();
                 app.view.menu.onThisPage.toggleActiveLink();
             }
@@ -344,26 +344,26 @@
             resize: () => {
                 app.view.viewportHeight.toggle();
             
-                if(app.element.navbarMenu) {
+                if (app.element.navbarMenu) {
                     app.view.menu.navbar.toggleResponsive();
                 }
 
-                if(app.element.sidebarMenu) {
+                if (app.element.sidebarMenu) {
                     app.view.menu.sidebar.toggleResponsive();
                 }
 
-                if(app.element.onThisPageMenu) {
+                if (app.element.onThisPageMenu) {
                     app.view.menu.onThisPage.toggleResponsive();
                 }
             },
 
             // Handle window 'scroll' event
             scroll: () => {
-                if(app.element.navbarMenu) {
+                if (app.element.navbarMenu) {
                     app.view.menu.navbar.toggleScroll();
                 }
 
-                if(app.element.onThisPageMenu) {
+                if (app.element.onThisPageMenu) {
                     app.view.menu.onThisPage.toggleActiveLink();
                 }
             }
