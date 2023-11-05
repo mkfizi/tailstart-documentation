@@ -19,7 +19,6 @@ Put unreleased changes here.
 ## [0.4.0] - 2023-11-05
 ### Added
 - Border to sidebar menu.
-- Responsive padding to sidebar menu content.
 
 ### Changed
 - Rewrite `app.js` method declaration.
