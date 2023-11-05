@@ -16,7 +16,11 @@ Types of changes:
 ## [Unreleased]
 Put unreleased changes here.
 
-## [0.4.0] - 2023-11-04
+## [0.4.0] - 2023-11-05
+### Added
+- Border to sidebar menu.
+- Responsive padding to sidebar menu content.
+
 ### Changed
 - Rewrite `app.js` method declaration.
 - Revise `404.html` page.
