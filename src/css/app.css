@@ -829,6 +829,10 @@ video {
   border-bottom-width: 1px;
 }
 
+.border-r {
+  border-right-width: 1px;
+}
+
 .border-neutral-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 229 229 / var(--tw-border-opacity));
@@ -1129,6 +1133,10 @@ body{
     right: 2rem;
   }
 
+  .sm\:ml-8 {
+    margin-left: 2rem;
+  }
+
   .sm\:gap-8 {
     gap: 2rem;
   }
@@ -1193,6 +1201,10 @@ body{
 
   .lg\:-mt-16 {
     margin-top: -4rem;
+  }
+
+  .lg\:ml-4 {
+    margin-left: 1rem;
   }
 
   .lg\:block {
